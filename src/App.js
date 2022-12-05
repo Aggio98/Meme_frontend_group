@@ -4,6 +4,7 @@ import ScrollToTop from "./config/scrollToTop";
 import { NavBar } from "./components";
 import { HomePage, SignUpPage } from "./pages";
 
+
 function App() {
   return (
     <div className="App">
