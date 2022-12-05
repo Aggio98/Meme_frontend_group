@@ -6,7 +6,7 @@ import appStateReducer from "./appState/slice";
 
 const store = configureStore({
   reducer: {
-    memes: memeReducer
+    memes: memeReducer,
     user: userReducer,
     appState: appStateReducer,
   },
