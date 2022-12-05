@@ -26,5 +26,4 @@ export const userSlice = createSlice({
 });
 
 export const { loginSuccess, logOut, tokenStillValid } = userSlice.actions;
-
 export default userSlice.reducer;
