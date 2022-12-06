@@ -7,8 +7,12 @@ const initialState = {
 export const memeSlice = createSlice({
   name: "memes",
   initialState,
-  reducers: {},
+  reducers: {
+    newMeme: (state, action) => {
+      console.log(state, "state event");
+    },
+  },
 });
 
-export const {} = memeSlice.actions;
+export const { newMeme } = memeSlice.actions;
 export default memeSlice.reducer;
