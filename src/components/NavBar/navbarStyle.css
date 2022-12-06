@@ -1,0 +1,61 @@
+.navbar {
+  width: 80%;
+  height: 80px;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 0.8px;
+  font-size: large;
+}
+
+.navTit {
+  text-decoration: none;
+  color: #fec260;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navTit:hover {
+  color: yellow;
+  font-weight: bold;
+}
+.navTit:active {
+  color: white;
+  transform: scale(0.9);
+}
+
+.tit {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bolder;
+  color: #f10086;
+}
+
+.left {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  color: #fec260;
+  font-size: 40px;
+  letter-spacing: normal;
+}
+.logo:hover {
+  color: yellow;
+  font-weight: bold;
+}
+.logo:active {
+  color: white;
+  transform: scale(0.9);
+}

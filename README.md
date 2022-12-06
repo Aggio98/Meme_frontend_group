@@ -12,7 +12,7 @@
 
 git clone git@github.com:Aggio98/Meme_frontend_group.git
 
-git pull origin
+git pull origin main
 
 git checkout -b your-branch-name
 
