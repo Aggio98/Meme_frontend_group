@@ -1,0 +1,6 @@
+.meme_card {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  background-color: antiquewhite;
+}
