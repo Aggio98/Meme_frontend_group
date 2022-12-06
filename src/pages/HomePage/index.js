@@ -67,9 +67,10 @@ const HomePage = () => {
             .map((e) => (
               <Text />
             ))}
-          <button onClick={addText}>add text</button>
+
           <button type="submit">Create MEHMEH</button>
         </form>
+        <button onClick={addText}>add text</button>
         <button
           variant="success"
           onClick={(e) => exportComponentAsJPEG(memeRef)}
