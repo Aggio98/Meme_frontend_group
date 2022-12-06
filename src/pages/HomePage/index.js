@@ -1,15 +1,27 @@
 import "./homePage.css";
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { useDispatch } from "react-redux";
 import { postMeme } from "../../store/memes/thunks";
+import { Text } from "../../components";
+import { useForm } from "react-hook-form";
+import { exportComponentAsJPEG } from "react-component-export-image";
 
 const HomePage = () => {
-  const [image, setImage] = useState();
-
   const dispatch = useDispatch();
+  const [image, setImage] = useState("");
+  const [count, setCount] = useState(0);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const memeRef = createRef();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    //Send this information inside the dispatch with data.top or data.bottom
     dispatch(postMeme(image));
   };
 
@@ -28,27 +40,43 @@ const HomePage = () => {
     console.log("file", file);
     setImage(file.url); //put the url in local state, next step you can send it to the backend
   };
+
+  const addText = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div>
       <h1>Homepage</h1>
-      <form onSubmit={handleSubmit}>
-        <p>
+      <div ref={memeRef}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Image: <input type="file" onChange={uploadImage} />
+            Select an Image <input type="file" onChange={uploadImage} />
           </label>
-        </p>
-
-        <img
-          src={
-            image
-              ? image
-              : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-          }
-          alt="preview"
-          style={{ width: "200px" }}
-        />
-      </form>
-      <button type="submit">Create MEHMEH</button>
+          <img
+            src={
+              image
+                ? image
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+            }
+            alt="preview"
+            style={{ width: "300px" }}
+          />
+          {Array(count)
+            .fill(0)
+            .map((e) => (
+              <Text />
+            ))}
+          <button onClick={addText}>add text</button>
+          <button type="submit">Create MEHMEH</button>
+        </form>
+        <button
+          variant="success"
+          onClick={(e) => exportComponentAsJPEG(memeRef)}
+        >
+          Download
+        </button>
+      </div>
     </div>
   );
 };
