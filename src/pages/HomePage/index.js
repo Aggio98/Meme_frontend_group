@@ -2,9 +2,11 @@ import "./homePage.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postMeme } from "../../store/memes/thunks";
+import Text from "../../components/Text";
 
 const HomePage = () => {
   const [image, setImage] = useState();
+  const [count, setCount] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -28,6 +30,9 @@ const HomePage = () => {
     console.log("file", file);
     setImage(file.url); //put the url in local state, next step you can send it to the backend
   };
+  const addText = () => {
+    setCount(count + 1);
+  };
   return (
     <div>
       <h1>Homepage</h1>
@@ -47,6 +52,12 @@ const HomePage = () => {
           alt="preview"
           style={{ width: "200px" }}
         />
+        {Array(count)
+          .fill(0)
+          .map((e) => (
+            <Text />
+          ))}
+        <button onClick={addText}>add text</button>
       </form>
       <button type="submit">Create MEHMEH</button>
     </div>

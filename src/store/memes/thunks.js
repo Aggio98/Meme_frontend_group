@@ -3,6 +3,16 @@ import axios from "axios";
 import { showMessageWithTimeout } from "../appState/thunks";
 import { newMeme } from "./slice";
 
+export const fetchAllMemes = () => async (dispatch, getState) => {
+  try {
+    const getMemes = await axios.get(`${apiUrl}/memes`);
+    console.log("memes from thunk", getMemes.data);
+    dispatch(newMeme(getMemes.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 export const postMeme = (image) => async (dispatch, getState) => {
   try {
     const { profile, token } = getState().user;

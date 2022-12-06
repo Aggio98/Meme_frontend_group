@@ -9,7 +9,8 @@ export const memeSlice = createSlice({
   initialState,
   reducers: {
     newMeme: (state, action) => {
-      console.log(state, "state event");
+      // console.log(state, "state event");
+      state.memeImg = action.payload;
     },
   },
 });
