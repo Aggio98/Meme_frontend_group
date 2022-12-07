@@ -10,6 +10,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [image, setImage] = useState("");
   const [count, setCount] = useState(0);
+  const [uploadedImage, setUploadedImage] = useState("");
 
   const memeRef = createRef();
 
@@ -22,7 +23,7 @@ const HomePage = () => {
 
   const onSubmit = (data) => {
     //Send this information inside the dispatch with data.top or data.bottom
-    dispatch(postMeme(image));
+    dispatch(postMeme(uploadedImage));
   };
 
   const uploadImage = async (e) => {
@@ -31,14 +32,14 @@ const HomePage = () => {
     data.append("file", files[0]);
     data.append("upload_preset", "pvsnqwpt");
 
-    console.log(uploadImage);
+    // console.log(uploadImage);
     const res = await fetch(
       "https://api.cloudinary.com/v1_1/dmdxlz22b/image/upload",
       { method: "POST", body: data }
     );
     const file = await res.json();
     console.log("file", file);
-    setImage(file.url); //put the url in local state, next step you can send it to the backend
+    setUploadedImage(file.url); //put the url in local state, next step you can send it to the backend
   };
 
   const addText = () => {
@@ -48,35 +49,46 @@ const HomePage = () => {
   return (
     <div>
       <h1>Homepage</h1>
-      <div ref={memeRef}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Select an Image <input type="file" onChange={uploadImage} />
-          </label>
-          <img
-            src={
-              image
-                ? image
-                : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-            }
-            alt="preview"
-            style={{ width: "300px" }}
+      <div>
+        <div style={{ margin: 20 }}>
+          <b>1.</b> Add image url to start editing:{" "}
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
           />
+        </div>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+        <div style={{ margin: 20 }} ref={memeRef}>
+          {image && (
+            <img src={image} alt="preview" style={{ width: "300px" }} />
+          )}
+
           {Array(count)
             .fill(0)
             .map((e) => (
               <Text />
             ))}
-
-          <button type="submit">Create MEHMEH</button>
-        </form>
-        <button onClick={addText}>add text</button>
-        <button
-          variant="success"
-          onClick={(e) => exportComponentAsJPEG(memeRef)}
-        >
-          Download
-        </button>
+        </div>
+        {/* </form> */}
+        <div style={{ margin: 20 }}>
+          <button onClick={addText}>2. add text</button>
+        </div>
+        <div style={{ margin: 20 }}>
+          <button
+            variant="success"
+            onClick={(e) => exportComponentAsJPEG(memeRef)}
+          >
+            3. Download
+          </button>
+        </div>
+        <div style={{ margin: 20 }}>
+          <label>
+            4. Save image to Database:{" "}
+            <input type="file" onChange={uploadImage} />
+          </label>
+        </div>
+        <button onClick={onSubmit}>5. Create MEHMEH</button>
       </div>
     </div>
   );
