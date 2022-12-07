@@ -17,7 +17,7 @@
 
 .navTit {
   text-decoration: none;
-  color: white;
+  color: #fec260;
   margin-left: auto;
   margin-right: auto;
 }
@@ -36,7 +36,7 @@
   margin-left: auto;
   margin-right: auto;
   font-weight: bolder;
-  color: black;
+  color: #22eaaa;
 }
 
 .navLeft {
@@ -48,7 +48,7 @@
   margin-left: auto;
   margin-right: auto;
   text-decoration: none;
-  color: white;
+  color: #fec260;
   font-size: 40px;
 }
 .navLogo:hover {
