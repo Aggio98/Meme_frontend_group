@@ -12,22 +12,23 @@
   justify-content: center;
   align-items: center;
   font-family: "Fredoka One", cursive;
-  letter-spacing: 0.8px;
-  font-size: large;
+  font-size: 20px;
 }
 
 .navTit {
   text-decoration: none;
-  color: #fec260;
+  color: white;
   margin-left: auto;
   margin-right: auto;
 }
 .navTit:hover {
   color: yellow;
+  text-shadow: -1px 1px 0 purple, 1px 1px 0 purple, 1px -1px 0 purple,
+    -1px -1px 0 #000;
   font-weight: bold;
 }
 .navTit:active {
-  color: white;
+  color: orangered;
   transform: scale(0.9);
 }
 
@@ -35,27 +36,28 @@
   margin-left: auto;
   margin-right: auto;
   font-weight: bolder;
-  color: #f10086;
+  color: black;
 }
 
-.left {
+.navLeft {
   margin-left: auto;
   margin-right: auto;
 }
 
-.logo {
+.navLogo {
   margin-left: auto;
   margin-right: auto;
   text-decoration: none;
-  color: #fec260;
+  color: white;
   font-size: 40px;
-  letter-spacing: normal;
 }
-.logo:hover {
+.navLogo:hover {
   color: yellow;
+  text-shadow: -1px 1px 0 purple, 1px 1px 0 purple, 1px -1px 0 purple,
+    -1px -1px 0 #000;
   font-weight: bold;
 }
-.logo:active {
-  color: white;
+.navLogo:active {
+  color: orangered;
   transform: scale(0.9);
 }
