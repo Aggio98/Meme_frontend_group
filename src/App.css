@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Merriweather+Sans:wght@300&display=swap");
 .App {
   width: 100%;
-  min-height: 800px;
+  min-height: 100vh;
   color: wheat;
   font-family: "Merriweather Sans", sans-serif;
   text-align: center;
