@@ -19,12 +19,12 @@ const NavBar = ({ user }) => {
         </Link>
       )}
 
-      <Link to="/" className="logo">
+      <Link to="/" className="navLogo">
         MEh MEh
       </Link>
 
       {!token ? (
-        <div className="left">
+        <div className="navLeft">
           {location.pathname === "/login" ? (
             <div className="tit">Login</div>
           ) : (
