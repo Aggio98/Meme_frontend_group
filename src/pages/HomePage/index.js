@@ -5,7 +5,7 @@ import { postMeme } from "../../store/memes/thunks";
 import { Text } from "../../components";
 import { useForm } from "react-hook-form";
 import { exportComponentAsJPEG } from "react-component-export-image";
-import { Container, Title, Button } from "../../styled";
+import { Container, Title, Button, Input } from "../../styled";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const HomePage = () => {
       <div>
         <div style={{ margin: 20 }}>
           <b>1.</b> Add image url to start editing:{" "}
-          <input
+          <Input
             type="text"
             value={image}
             onChange={(e) => setImage(e.target.value)}
@@ -86,7 +86,7 @@ const HomePage = () => {
         <div style={{ margin: 20 }}>
           <label>
             4. Save image to Database:{" "}
-            <input type="file" onChange={uploadImage} />
+            <Input type="file" onChange={uploadImage} />
           </label>
         </div>
         <Button onClick={onSubmit}>5. Create MEHMEH</Button>

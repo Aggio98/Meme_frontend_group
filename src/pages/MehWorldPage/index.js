@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMemes } from "../../store/memes/selectors";
 import { fetchAllMemes } from "../../store/memes/thunks";
-import "./mehWorldPage.css";
+import { Container, Title } from "../../styled";
 
 const MehWorldPage = () => {
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const MehWorldPage = () => {
     );
 
   return (
-    <div>
-      <h1>meme page heree</h1>
+    <Container>
+      <Title>MEhMEh's</Title>
       {allMemes.map((meme, index) => {
         return (
           <div key={index} className="meme_card">
@@ -28,7 +28,7 @@ const MehWorldPage = () => {
           </div>
         );
       })}
-    </div>
+    </Container>
   );
 };
 
