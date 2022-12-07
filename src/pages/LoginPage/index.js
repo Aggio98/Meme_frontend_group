@@ -1,13 +1,12 @@
-import "./loginPage.css";
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 import { login } from "../../store/user/thunks";
 import { selectToken } from "../../store/user/selectors";
+import { Container, Button, Input, SubText, Title } from "../../styled";
 
-const LoginPage = () => {
+export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,29 +27,30 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <Container>
+      <Title>Login</Title>
       <form onSubmit={submitForm}>
-        <input
+        <Input
           placeholder="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <input
+        <Input
           type="password"
           placeholder="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
         <br />
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
       </form>
-      <p>
-        Don't have an account yet? Click <Link to="/signup">here</Link> to sign
-        up!
-      </p>
-    </div>
+      <SubText>
+        Don't have an account yet? Click{" "}
+        <Link to="/signup" style={{ textDecoration: "none", color: "#f10086" }}>
+          here
+        </Link>{" "}
+        to sign up!
+      </SubText>
+    </Container>
   );
 };
-
-export { LoginPage };
