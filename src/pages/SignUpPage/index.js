@@ -1,11 +1,11 @@
-import "./signUpPage.css";
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { signUp } from "../../store/user/thunks";
 import { selectToken } from "../../store/user/selectors";
+
+import { Container, Button, Title, Input } from "../../styled";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -29,29 +29,29 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <Container>
+      <Title>Sign Up</Title>
       <form onSubmit={submitForm}>
-        <input
+        <Input
           placeholder="name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
-        <input
+        <Input
           placeholder="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <input
+        <Input
           type="password"
           placeholder="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
         <br />
-        <button type="submit">Sign up</button>
+        <Button type="submit">Sign up</Button>
       </form>
-    </div>
+    </Container>
   );
 };
 
