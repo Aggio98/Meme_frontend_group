@@ -46,8 +46,8 @@ export const LoginPage = () => {
       </form>
       <SubText>
         Don't have an account yet? Click{" "}
-        <Link to="/signup" style={{ textDecoration: "none", color: "#f10086" }}>
-          here
+        <Link to="/signup" style={{ textDecoration: "none", color: "#22eaaa" }}>
+          <strong>here</strong>
         </Link>{" "}
         to sign up!
       </SubText>

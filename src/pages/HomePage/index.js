@@ -5,6 +5,7 @@ import { postMeme } from "../../store/memes/thunks";
 import { Text } from "../../components";
 import { useForm } from "react-hook-form";
 import { exportComponentAsJPEG } from "react-component-export-image";
+import { Container, Title, Button } from "../../styled";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -46,8 +47,8 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <h1>Homepage</h1>
+    <Container>
+      <Title>Homepage</Title>
       <div ref={memeRef}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
@@ -68,17 +69,17 @@ const HomePage = () => {
               <Text />
             ))}
 
-          <button type="submit">Create MEHMEH</button>
+          <Button type="submit">Create MEHMEH</Button>
         </form>
-        <button onClick={addText}>add text</button>
-        <button
+        <Button onClick={addText}>add text</Button>
+        <Button
           variant="success"
           onClick={(e) => exportComponentAsJPEG(memeRef)}
         >
           Download
-        </button>
+        </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 
