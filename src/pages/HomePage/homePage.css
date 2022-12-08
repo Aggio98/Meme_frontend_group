@@ -1,0 +1,78 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.genieForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.genieFormInput {
+  width: 400px;
+  height: 30px;
+  margin: 8px;
+  padding: 12px 20px;
+  background-color: #22eaaa;
+  border: none;
+  border-radius: 5vw;
+}
+.genieFormInput::placeholder {
+  font-family: Fredoka One;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+.genieFormInput:hover {
+  border: 2px solid yellow;
+  text-shadow: 2px 2px 0 rgb(51, 51, 190);
+  box-shadow: 2px 2px 0 rgb(51, 51, 190);
+}
+
+.genieFormButton {
+  width: 200px;
+  background: #22eaaa;
+  color: white;
+  margin: 8px;
+  padding: 12px 20px;
+  border: 2px solid #22eaaa;
+  border-radius: 5vw;
+  font-family: Fredoka One;
+  font-size: 18px;
+}
+.genieFormButton:hover {
+  border: 2px solid yellow;
+  text-shadow: 2px 2px 0 rgb(51, 51, 190);
+  box-shadow: 2px 2px 0 rgb(51, 51, 190);
+}
+.genieFormButton:active {
+  transform: scale(0.9);
+  background: blue;
+}
+
+.step4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: Fredoka One;
+  background: #22eaaa;
+  color: white;
+  font-size: 18px;
+  width: 400px;
+  margin: 8px;
+  padding: 12px 20px;
+  border: 2px solid #22eaaa;
+  border-radius: 5vw;
+}
+.step4:hover {
+  border: 2px solid yellow;
+  text-shadow: 2px 2px 0 rgb(51, 51, 190);
+  box-shadow: 2px 2px 0 rgb(51, 51, 190);
+}
+.step4:active {
+  transform: scale(0.9);
+  background: blue;
+}
