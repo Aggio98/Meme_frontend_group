@@ -26,7 +26,7 @@ const MehWorldPage = () => {
       <Title>MEhMEh's</Title>
       <CardContainer>
         {allMemes.map((meme) => {
-          return <MemeCard key={meme.id} imgUrl={meme.imgUrl} />;
+          return <MemeCard key={meme.id} imgUrl={meme.imgUrl} id={meme.id} />;
         })}
       </CardContainer>
     </Container>
