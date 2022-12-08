@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+
 import { selectMemes } from "../../store/memes/selectors";
 import { fetchAllMemes } from "../../store/memes/thunks";
 import { Container, Title } from "../../styled";
+import { MemeCard } from "../../components";
 
 const MehWorldPage = () => {
   const dispatch = useDispatch();
@@ -21,15 +24,21 @@ const MehWorldPage = () => {
   return (
     <Container>
       <Title>MEhMEh's</Title>
-      {allMemes.map((meme, index) => {
-        return (
-          <div key={index} className="meme_card">
-            <img src={meme.imgUrl} alt="meme" width="500px" />
-          </div>
-        );
-      })}
+      <CardContainer>
+        {allMemes.map((meme) => {
+          return <MemeCard key={meme.id} imgUrl={meme.imgUrl} />;
+        })}
+      </CardContainer>
     </Container>
   );
 };
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+  justify-content: center;
+`;
 
 export { MehWorldPage };
