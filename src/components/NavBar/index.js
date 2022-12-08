@@ -12,21 +12,21 @@ const NavBar = ({ user }) => {
   return (
     <div className="navbar">
       {location.pathname === "/mehworld" ? (
-        <div className="tit">MehWorld</div>
+        <div className="navTitDis">MehWorld</div>
       ) : (
         <Link to="/mehworld" className="navTit">
           MehWorld
         </Link>
       )}
 
-      <Link to="/" className="logo">
+      <Link to="/" className="navLogo">
         MEh MEh
       </Link>
 
       {!token ? (
-        <div className="left">
+        <div className="navRight">
           {location.pathname === "/login" ? (
-            <div className="tit">Login</div>
+            <div className="navTitDis">Login</div>
           ) : (
             <Link to="/login" className="navTit">
               Login

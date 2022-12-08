@@ -16,6 +16,7 @@ export const fetchAllMemes = () => async (dispatch, getState) => {
 export const postMeme = (imgUrl) => async (dispatch, getState) => {
   try {
     //const { profile, token } = getState().user;
+    console.log("image", imgUrl);
     const response = await axios.post(
       `${apiUrl}/memes/`,
       {
@@ -27,7 +28,7 @@ export const postMeme = (imgUrl) => async (dispatch, getState) => {
     );
     console.log("Response newEvent", response.data);
     dispatch(showMessageWithTimeout("success", true, "Meme Created"));
-    dispatch(newMeme(response.data.imgUrl));
+    dispatch(fetchAllMemes());
   } catch (e) {
     console.error(e);
   }
