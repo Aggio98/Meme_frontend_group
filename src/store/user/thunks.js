@@ -3,9 +3,7 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
-
-
+import { getFavs, loginSuccess, logOut, tokenStillValid } from "./slice";
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
@@ -115,6 +113,22 @@ export const getUserWithStoredToken = () => {
       // get rid of the token by logging out
       dispatch(logOut());
       dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const getFavorites = (id) => {
+  return async (dispatch, getState) => {
+    if (id === null) return;
+    try {
+      const response = await axios.get(`${apiUrl}/memes/${id}`);
+      dispatch(getFavs(response.data));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+      } else {
+        console.log(error);
+      }
     }
   };
 };
