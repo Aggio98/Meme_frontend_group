@@ -11,8 +11,12 @@ export const Input = styled.input`
     color: #b6b8b7;
   }
 
+  &:hover {
+    border-color: yellow;
+  }
+
   &:focus {
     outline: none;
-    border-color: #f10086;
+    border-color: rgb(51, 51, 190);
   }
 `;

@@ -1,9 +1,10 @@
 import "./homePage.css";
 import React, { useState, createRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postMeme } from "../../store/memes/thunks";
 import { Text } from "../../components";
 import { useForm } from "react-hook-form";
+import { selectToken } from "../../store/user/selectors";
 import { exportComponentAsJPEG } from "react-component-export-image";
 import { Container, Title, Button, Input } from "../../styled";
 
@@ -12,7 +13,7 @@ const HomePage = () => {
   const [image, setImage] = useState("");
   const [count, setCount] = useState(0);
   const [uploadedImage, setUploadedImage] = useState("");
-
+  const token = useSelector(selectToken);
   const memeRef = createRef();
 
   const {
@@ -48,50 +49,69 @@ const HomePage = () => {
   };
 
   return (
-    <Container>
-      <Title>Homepage</Title>
-      <div>
-        <div style={{ margin: 20 }}>
-          <b>1.</b> Add image url to start editing:{" "}
-          <Input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
+    <div>
+      {!token ? (
+        <div className="homepage">
+          <Title>Login to make your own MEhMEh</Title>
+          <iframe
+            src="https://giphy.com/embed/oBYB0gqUy3xxBf89aT"
+            width="480"
+            height="366"
+          ></iframe>
         </div>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-        <div style={{ margin: 20 }} ref={memeRef}>
-          {image && (
-            <img src={image} alt="preview" style={{ width: "300px" }} />
-          )}
+      ) : (
+        <Container>
+          <Title>Let's MEh-genie !</Title>
+          <div className="genieForm">
+            <div style={{ margin: 20 }}>
+              <input
+                className="genieFormInput"
+                placeholder="1. Add your image url here"
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+            </div>
+            <div style={{ margin: 20 }} ref={memeRef}>
+              {image && (
+                <img src={image} alt="preview" style={{ width: "300px" }} />
+              )}
 
-          {Array(count)
-            .fill(0)
-            .map((e) => (
-              <Text />
-            ))}
-        </div>
-        {/* </form> */}
-        <div style={{ margin: 20 }}>
-          <Button onClick={addText}>2. add text</Button>
-        </div>
-        <div style={{ margin: 20 }}>
-          <Button
-            variant="success"
-            onClick={(e) => exportComponentAsJPEG(memeRef)}
-          >
-            3. Download
-          </Button>
-        </div>
-        <div style={{ margin: 20 }}>
-          <label>
-            4. Save image to Database:{" "}
-            <Input type="file" onChange={uploadImage} />
-          </label>
-        </div>
-        <Button onClick={onSubmit}>5. Create MEHMEH</Button>
-      </div>
-    </Container>
+              {Array(count)
+                .fill(0)
+                .map((e) => (
+                  <Text />
+                ))}
+            </div>
+            <div style={{ margin: 20 }}>
+              <button className="genieFormButton" onClick={addText}>
+                2. Add text
+              </button>
+            </div>
+            <div style={{ margin: 20 }}>
+              <button
+                className="genieFormButton"
+                variant="success"
+                onClick={(e) => exportComponentAsJPEG(memeRef)}
+              >
+                3. Download
+              </button>
+            </div>
+            <div style={{ margin: 20 }} className="step4">
+              4. Upload the downloaded image here{" "}
+              <input
+                className="step4Input"
+                type="file"
+                onChange={uploadImage}
+              />
+            </div>
+            <button className="genieFormButton" onClick={onSubmit}>
+              5. Create MEHMEH
+            </button>
+          </div>
+        </Container>
+      )}
+    </div>
   );
 };
 
