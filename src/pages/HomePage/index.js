@@ -1,5 +1,5 @@
 import "./homePage.css";
-import React, { useState, createRef, useEffect } from "react";
+import React, { useState, createRef } from "react";
 import { useDispatch } from "react-redux";
 import { postMeme } from "../../store/memes/thunks";
 import { Text } from "../../components";
@@ -12,7 +12,6 @@ const HomePage = () => {
   const [count, setCount] = useState(0);
 
   const memeRef = createRef();
-  console.log("meme ref", memeRef);
 
   const {
     register,
@@ -23,12 +22,9 @@ const HomePage = () => {
 
   const onSubmit = (data) => {
     //Send this information inside the dispatch with data.top or data.bottom
-    console.log("inside submit", image);
     dispatch(postMeme(image));
   };
-  // useEffect(() => {
-  //   memeRef.current = image;
-  // }, []);
+
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -50,9 +46,9 @@ const HomePage = () => {
   };
 
   return (
-    <div ref={memeRef}>
+    <div>
       <h1>Homepage</h1>
-      <div>
+      <div ref={memeRef}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
             Select an Image <input type="file" onChange={uploadImage} />
